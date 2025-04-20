@@ -1,18 +1,26 @@
+import Blocks.Mines;
+import Blocks.NormalBlock;
+
 import javax.swing.*;
 import java.util.Random;
 
 public class GameWindow extends JFrame {
+    //雷区，0为无雷，1为又雷
     int[][] minesState = new int[15][15];
+    //放置雷、普通方块等图片的panel
     JPanel panel = new JPanel();
 
     public GameWindow() {
+        //初始化
         initMines();
+        //将地图放到窗口上
         this.add(panel);
 
         this.setTitle("Game");
         this.setSize(500, 550);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
     public void printMinesNum(){
         for(int i = 1; i <= 10; i++){
@@ -44,8 +52,9 @@ public class GameWindow extends JFrame {
                 Mines mines = new Mines();
                 NormalBlock normalBlock = new NormalBlock();
 
-                normalBlock.setLocation(x*normalBlock.getWidth(), y*normalBlock.getHeight());
-                mines.setLocation(x*mines.getWidth(), y*mines.getHeight());
+                //设置block的x和y
+                normalBlock.setXY(x*normalBlock.getWidth(), y*normalBlock.getHeight());
+                mines.setXY(x*mines.getWidth(), y*mines.getHeight());
                 if(minesState[y][x] == 1){
                     panel.add(mines);
                 }else {
