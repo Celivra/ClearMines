@@ -1,9 +1,9 @@
-package Blocks;
+import Blocks.block;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Mines extends JLabel implements block{
+public class Mines extends JLabel implements block {
     ImageIcon icon;
     int x, y;
     public Mines() {

@@ -1,11 +1,15 @@
-package Blocks;
+import Blocks.MinesInit;
+import Blocks.block;
+import Blocks.pair;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class NormalBlock extends JLabel implements block{
+public class NormalBlock extends JLabel implements block {
     ImageIcon icon;
     int x, y;
     public NormalBlock(){
@@ -19,7 +23,15 @@ public class NormalBlock extends JLabel implements block{
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                ///判断有无雷，
+                //当前点击的方块是否已经被访问过
+                if(MinesInit.TouchMap[e.getX()][e.getY()] == 1){return;}
+
+                //判断点击的方块是否为雷
+                if(MinesInit.minesState[getX()][getY()] == 0){
+                    //扩展
+                }else{
+                    //游戏结束
+                }
             }
         });
     }
